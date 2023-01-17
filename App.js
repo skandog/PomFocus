@@ -1,22 +1,27 @@
 import React, { useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+// import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View, Platform, StatusBar, SafeAreaView } from "react-native";
 
 import { Focus } from "./src/features/focus/Focus";
 import { colors } from "./src/utils/colors";
+import { Timer } from "./src/features/timer/Timer";
 
 export default function App() {
   const [focusSubject, setFocusSubject] = useState(null);
   console.log("focusSubject", focusSubject);
   return (
-    <View style={styles.container}>
-      <Focus addSubject={setFocusSubject} />
-      <Text style={{ color: "#ffd", border: "1 solid #fff" }}>
+    <SafeAreaView style={styles.container}>
+      {focusSubject ? (
+        <Timer focusSubject={focusSubject} />
+      ) : (
+        <Focus addSubject={setFocusSubject} />
+      )}
+      {/* <Text style={{ color: "#ffd", border: "1 solid #fff" }}>
         {focusSubject}
-      </Text>
+      </Text> */}
 
-      <StatusBar style="auto" />
-    </View>
+      {/* <StatusBar /> */}
+    </SafeAreaView>
   );
 }
 
@@ -25,6 +30,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.primary,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+
     // alignItems: "center",
     // justifyContent: "center",
   },
