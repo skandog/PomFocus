@@ -1,5 +1,6 @@
 import Reactm, { useState } from "react";
 import { View, StyleSheet, Text } from "react-native";
+import { ProgressBar } from "react-native-paper";
 
 import { colors } from "../../utils/colors";
 import { spacingSizes } from "../../utils/sizes";
@@ -8,15 +9,23 @@ import { Button } from "../../components/Button";
 
 export const Timer = ({ focusSubject }) => {
   const [isStarted, setIsStarted] = useState(false);
-
+  const [progress, setProgress] = useState(1);
+  console.log(progress);
   return (
     <View style={styles.container}>
       <View style={styles.countdown}>
-        <Countdown isPaused={!isStarted} />
+        <Countdown isPaused={!isStarted} onProgress={setProgress} />
       </View>
       <View style={styles.focusContainer}>
         <Text style={styles.title}>Current focus:</Text>
         <Text style={styles.task}>{focusSubject}</Text>
+      </View>
+      <View style={styles.progressContainer}>
+        <ProgressBar
+          progress={progress}
+          color={colors.secondary}
+          style={styles.progress}
+        />
       </View>
       <View style={styles.buttonContainer}>
         <Button
@@ -50,6 +59,12 @@ const styles = StyleSheet.create({
   },
   focusContainer: {
     paddingTop: spacingSizes.xxxl,
+  },
+  progress: {
+    height: 20,
+  },
+  progressContainer: {
+    paddingTop: spacingSizes.md,
   },
   task: {
     color: colors.white,

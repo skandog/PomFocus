@@ -7,7 +7,7 @@ import { fontSizes, spacingSizes } from "../utils/sizes";
 const minutesToMillis = (min) => min * 1000 * 60;
 const formatTime = (time) => (time < 10 ? `0${time}` : time);
 
-export const Countdown = ({ minutes = 20, isPaused }) => {
+export const Countdown = ({ minutes = 20, isPaused, onProgress }) => {
   const interval = React.useRef(null);
   const countDown = () => {
     setMillis((time) => {
@@ -15,6 +15,7 @@ export const Countdown = ({ minutes = 20, isPaused }) => {
         return time;
       }
       const timeLeft = time - 1000;
+      onProgress(timeLeft / time);
       // report progress
       return timeLeft;
     });
