@@ -10,7 +10,7 @@ export const Focus = () => {
         <Text style={styles.title}>What you working on?</Text>
         <View style={styles.inputContainer}>
           <TextInput style={styles.textInput} />
-          <Button title={"+"} size={75} />
+          <Button title={"+"} size={50} />
         </View>
       </View>
     </View>
@@ -24,6 +24,8 @@ const styles = StyleSheet.create({
   inputContainer: {
     paddingTop: 20,
     flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
   textInput: {
     flex: 1,

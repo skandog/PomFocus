@@ -17,7 +17,7 @@ export const Button = ({
 const styles = (size) =>
   StyleSheet.create({
     radius: {
-      borderRadius: size / 2,
+      borderRadius: size / 6,
       width: size,
       height: size,
       alignItems: "center",
