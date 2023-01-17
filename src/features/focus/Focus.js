@@ -1,16 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { TextInput } from "react-native-paper";
 import { Button } from "../../components/Button";
 
-export const Focus = () => {
+export const Focus = ({ addSubject }) => {
+  const [tempItem, setTempItem] = useState(null);
+
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>What you working on?</Text>
         <View style={styles.inputContainer}>
-          <TextInput style={styles.textInput} />
-          <Button title={"+"} size={50} />
+          <TextInput
+            style={styles.textInput}
+            onChange={({ nativeEvent }) => {
+              console.log(nativeEvent);
+
+              setTempItem(nativeEvent.text);
+            }}
+            // onChange={({ nativeEvent }) => {
+            //   console.log(nativeEvent);
+            // }}
+          />
+          <Button
+            title={"+"}
+            size={50}
+            onPress={() => {
+              addSubject(tempItem);
+            }}
+          />
         </View>
       </View>
     </View>
@@ -24,7 +42,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     paddingTop: 20,
     flexDirection: "row",
-    justifyContent: "center",
+    // justifyContent: "center",
     alignItems: "center",
   },
   textInput: {
