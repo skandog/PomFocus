@@ -5,16 +5,17 @@ import { colors } from "../utils/colors";
 import { fontSizes, spacingSizes } from "../utils/sizes";
 
 const minutesToMillis = (min) => min * 1000 * 60;
+const formatTime = (time) => (time < 10 ? `0${time}` : time);
 
 export const Countdown = ({ minutes = 20, isPaused }) => {
   const [millis, setMillis] = useState(minutesToMillis(minutes));
 
   const minute = Math.floor(millis / 1000 / 60) % 60;
-  const second = Math.floor(millis / 1000) % 60;
+  const seconds = Math.floor(millis / 1000) % 60;
   return (
     <View>
       <Text style={styles.text}>
-        {minute}:{second}
+        {formatTime(minute)}:{formatTime(seconds)}
       </Text>
     </View>
   );
