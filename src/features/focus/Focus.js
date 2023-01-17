@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { TextInput } from "react-native-paper";
+import { Button } from "../../components/Button";
 
 export const Focus = () => {
   return (
@@ -9,6 +10,7 @@ export const Focus = () => {
         <Text style={styles.title}>What you working on?</Text>
         <View style={styles.inputContainer}>
           <TextInput />
+          <Button title={"+"} />
         </View>
       </View>
     </View>
