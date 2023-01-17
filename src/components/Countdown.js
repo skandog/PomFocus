@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   text: {
-    fontSize: fontSizes.xl,
+    fontSize: fontSizes.xxxl,
     fontWeight: "bold",
     color: colors.white,
     padding: spacingSizes.lg,

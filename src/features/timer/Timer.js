@@ -8,7 +8,9 @@ import { Countdown } from "../../components/Countdown";
 export const Timer = ({ focusSubject }) => {
   return (
     <View style={styles.container}>
-      <Countdown />
+      <View style={styles.countdown}>
+        <Countdown />
+      </View>
       <View style={styles.focusContainer}>
         <Text style={styles.title}>Current focus:</Text>
         <Text style={styles.task}>{focusSubject}</Text>
@@ -20,6 +22,11 @@ export const Timer = ({ focusSubject }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  countdown: {
+    flex: 0.5,
+    alignItems: "center",
+    justifyContent: "center",
   },
   focusContainer: {
     paddingTop: spacingSizes.xxxl,
