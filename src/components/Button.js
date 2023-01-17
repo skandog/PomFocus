@@ -1,6 +1,8 @@
 import React from "react";
 import { Text, TouchableOpacity, StyleSheet } from "react-native";
 
+import { colors } from "../utils/colors";
+
 export const Button = ({
   style = {},
   textStyle = {},
@@ -25,11 +27,11 @@ const styles = (size) =>
       height: size,
       alignItems: "center",
       justifyContent: "center",
-      borderColor: "#fff",
+      borderColor: colors.white,
       borderWidth: 2,
     },
     text: {
-      color: "#fff",
+      color: colors.white,
       fontSize: size / 3,
     },
   });

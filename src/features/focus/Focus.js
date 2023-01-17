@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { TextInput } from "react-native-paper";
+
 import { Button } from "../../components/Button";
+import { fontSizes, spacingSizes } from "../../utils/sizes";
+import { colors } from "../../utils/colors";
 
 export const Focus = ({ addSubject }) => {
   const [tempItem, setTempItem] = useState(null);
@@ -18,9 +21,9 @@ export const Focus = ({ addSubject }) => {
 
               setTempItem(nativeEvent.text);
             }}
-            // onChange={({ nativeEvent }) => {
-            //   console.log(nativeEvent);
-            // }}
+            onSubmitEditing={() => {
+              addSubject(tempItem);
+            }}
           />
           <Button
             title={"+"}
@@ -40,28 +43,23 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   inputContainer: {
-    paddingTop: 20,
+    paddingTop: spacingSizes.md,
     flexDirection: "row",
     // justifyContent: "center",
     alignItems: "center",
   },
   textInput: {
     flex: 1,
-    marginRight: 16,
+    marginRight: spacingSizes.md,
   },
   title: {
-    color: "#fff",
+    color: colors.white,
     fontWeight: "bold",
-    fontSize: 26,
+    fontSize: fontSizes.lg,
   },
   titleContainer: {
     flex: 0.5,
-    padding: 18,
+    padding: spacingSizes.md,
     justifyContent: "center",
   },
 });
-
-// flexDirection: "column",
-// justifyContent: "center",
-// alignItems: "center",
-// backgroundColor: "#454545",
