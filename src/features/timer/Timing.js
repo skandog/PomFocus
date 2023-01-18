@@ -3,11 +3,9 @@ import { View, StyleSheet } from "react-native";
 import { Button } from "../../components/Button";
 
 export const Timing = ({ onChangeTime, mins }) => {
-  const changeMins = () => {
-    onChangeTime(mins);
-  };
 
-  return (
+
+    return (
     <View style={styles.timingButton}>
       <Button
         size={60}

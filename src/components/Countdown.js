@@ -45,6 +45,8 @@ export const Countdown = ({ minutes = 20, isPaused, onProgress }) => {
   const minute = Math.floor(millis / 1000 / 60) % 60;
   const seconds = Math.floor(millis / 1000) % 60;
 
+  
+
   return (
     <View>
       <Text style={styles.text}>

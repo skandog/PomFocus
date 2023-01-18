@@ -1,6 +1,7 @@
 import Reactm, { useState } from "react";
 import { View, StyleSheet, Text } from "react-native";
 import { ProgressBar } from "react-native-paper";
+import { useKeepAwake } from "expo-keep-awake";
 
 import { colors } from "../../utils/colors";
 import { spacingSizes } from "../../utils/sizes";
@@ -13,8 +14,12 @@ export const Timer = ({ focusSubject }) => {
   const [isStarted, setIsStarted] = useState(false);
   const [progress, setProgress] = useState(1);
 
+  useKeepAwake();
+
   const changeTime = (mins) => {
     setMinutes(mins);
+    setProgress(1);
+    setIsStarted(false);
   };
 
   const onProgress = (progress) => {
