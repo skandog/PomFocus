@@ -1,5 +1,5 @@
 import Reactm, { useState } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Vibration, Platform } from "react-native";
 import { ProgressBar } from "react-native-paper";
 import { useKeepAwake } from "expo-keep-awake";
 
@@ -9,12 +9,33 @@ import { Countdown } from "../../components/Countdown";
 import { Button } from "../../components/Button";
 import { Timing } from "./Timing";
 
+const DEFAULT_TIME = 0.1;
+
 export const Timer = ({ focusSubject }) => {
-  const [minutes, setMinutes] = useState(20);
+  const [minutes, setMinutes] = useState(DEFAULT_TIME);
   const [isStarted, setIsStarted] = useState(false);
   const [progress, setProgress] = useState(1);
 
   useKeepAwake();
+
+  const onProgress = (progress) => {
+    setProgress(progress);
+  };
+
+  const vibrate = () => {
+    if (Platform.OS === "ios") {
+      const interval = setInterval(() => {
+        Vibration.vibrate();
+        1000;
+      });
+
+      setTimeout(() => {
+        clearInterval(interval), 2000;
+      });
+    } else {
+      Vibration.vibrate("2s");
+    }
+  };
 
   const changeTime = (mins) => {
     setMinutes(mins);
@@ -22,9 +43,12 @@ export const Timer = ({ focusSubject }) => {
     setIsStarted(false);
   };
 
-  const onProgress = (progress) => {
-    setProgress(progress);
+  const onEnd = () => {
+    setMinutes(DEFAULT_TIME);
+    setProgress(1);
+    setIsStarted(false);
   };
+
   console.log(minutes);
 
   return (
@@ -34,6 +58,7 @@ export const Timer = ({ focusSubject }) => {
           minutes={minutes}
           isPaused={!isStarted}
           onProgress={onProgress}
+          onEnd={onEnd}
         />
       </View>
       <View style={styles.focusContainer}>

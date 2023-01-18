@@ -7,12 +7,14 @@ import { fontSizes, spacingSizes } from "../utils/sizes";
 const minutesToMillis = (min) => min * 1000 * 60;
 const formatTime = (time) => (time < 10 ? `0${time}` : time);
 
-export const Countdown = ({ minutes = 20, isPaused, onProgress }) => {
+export const Countdown = ({ minutes = 20, isPaused, onProgress, onEnd }) => {
   const interval = React.useRef(null);
 
   const countDown = () => {
     setMillis((time) => {
       if (time === 0) {
+        clearInterval(interval.current);
+        onEnd();
         return time;
       }
       const timeLeft = time - 1000;
@@ -44,8 +46,6 @@ export const Countdown = ({ minutes = 20, isPaused, onProgress }) => {
 
   const minute = Math.floor(millis / 1000 / 60) % 60;
   const seconds = Math.floor(millis / 1000) % 60;
-
-  
 
   return (
     <View>
