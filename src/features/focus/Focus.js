@@ -7,7 +7,7 @@ import { fontSizes, spacingSizes } from "../../utils/sizes";
 import { colors } from "../../utils/colors";
 
 export const Focus = ({ addSubject }) => {
-  const [tempItem, setTempItem] = useState(null);
+  const [subject, setSubject] = useState(null);
 
   return (
     <View style={styles.container}>
@@ -19,17 +19,17 @@ export const Focus = ({ addSubject }) => {
             onChange={({ nativeEvent }) => {
               console.log(nativeEvent);
 
-              setTempItem(nativeEvent.text);
+              setSubject(nativeEvent.text);
             }}
             onSubmitEditing={() => {
-              addSubject(tempItem);
+              addSubject(subject);
             }}
           />
           <Button
             title={"+"}
             size={50}
             onPress={() => {
-              addSubject(tempItem);
+              addSubject(subject);
             }}
           />
         </View>
