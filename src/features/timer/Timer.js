@@ -10,11 +10,20 @@ import { Button } from "../../components/Button";
 export const Timer = ({ focusSubject }) => {
   const [isStarted, setIsStarted] = useState(false);
   const [progress, setProgress] = useState(1);
+
+  const onProgress = (progress) => {
+    setProgress(progress);
+  };
+
   console.log(progress);
   return (
     <View style={styles.container}>
       <View style={styles.countdown}>
-        <Countdown isPaused={!isStarted} onProgress={setProgress} />
+        <Countdown
+          minutes={0.5}
+          isPaused={!isStarted}
+          onProgress={onProgress}
+        />
       </View>
       <View style={styles.focusContainer}>
         <Text style={styles.title}>Current focus:</Text>
