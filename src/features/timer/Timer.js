@@ -6,6 +6,7 @@ import { colors } from "../../utils/colors";
 import { spacingSizes } from "../../utils/sizes";
 import { Countdown } from "../../components/Countdown";
 import { Button } from "../../components/Button";
+import { Timing } from "./Timing";
 
 export const Timer = ({ focusSubject }) => {
   const [minutes, setMinutes] = useState(20);
@@ -19,6 +20,7 @@ export const Timer = ({ focusSubject }) => {
   const onProgress = (progress) => {
     setProgress(progress);
   };
+  console.log(minutes);
 
   return (
     <View style={styles.container}>
@@ -40,8 +42,10 @@ export const Timer = ({ focusSubject }) => {
           style={styles.progress}
         />
       </View>
-      <View style={styles.buttonContainer}>
-        <Timer onChangeTime={changeTime} />
+      <View style={styles.buttonContainerTiming}>
+        <Timing onChangeTime={changeTime} mins={20} />
+        <Timing onChangeTime={changeTime} mins={25} />
+        <Timing onChangeTime={changeTime} mins={30} />
       </View>
       <View style={styles.buttonContainer}>
         <Button
@@ -64,6 +68,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     // marginTop: spacingSizes.md,
+  },
+  buttonContainerTiming: {
+    flex: 0.3,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
   },
   container: {
     flex: 1,
