@@ -8,19 +8,23 @@ import { Countdown } from "../../components/Countdown";
 import { Button } from "../../components/Button";
 
 export const Timer = ({ focusSubject }) => {
+  const [minutes, setMinutes] = useState(20);
   const [isStarted, setIsStarted] = useState(false);
   const [progress, setProgress] = useState(1);
+
+  const changeTime = (mins) => {
+    setMinutes(mins);
+  };
 
   const onProgress = (progress) => {
     setProgress(progress);
   };
 
-  console.log(progress);
   return (
     <View style={styles.container}>
       <View style={styles.countdown}>
         <Countdown
-          minutes={0.5}
+          minutes={minutes}
           isPaused={!isStarted}
           onProgress={onProgress}
         />
@@ -35,6 +39,9 @@ export const Timer = ({ focusSubject }) => {
           color={colors.secondary}
           style={styles.progress}
         />
+      </View>
+      <View style={styles.buttonContainer}>
+        <Timer onChangeTime={changeTime} />
       </View>
       <View style={styles.buttonContainer}>
         <Button
