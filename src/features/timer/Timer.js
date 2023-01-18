@@ -11,7 +11,7 @@ import { Timing } from "./Timing";
 
 // const DEFAULT_TIME = 0.1;
 
-export const Timer = ({ focusSubject }) => {
+export const Timer = ({ focusSubject, onTimerEnd }) => {
   const [minutes, setMinutes] = useState(0.1);
   const [isStarted, setIsStarted] = useState(false);
   const [progress, setProgress] = useState(1);
@@ -48,6 +48,7 @@ export const Timer = ({ focusSubject }) => {
     setIsStarted(false);
     setMinutes(0.1);
     vibrate();
+    onTimerEnd();
   };
 
   return (

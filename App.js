@@ -18,7 +18,12 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       {focusSubject ? (
-        <Timer focusSubject={focusSubject} />
+        <Timer
+          focusSubject={focusSubject}
+          onTimerEnd={() => {
+            setFocusSubject(null);
+          }}
+        />
       ) : (
         <Focus addSubject={setFocusSubject} />
       )}
