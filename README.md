@@ -48,4 +48,5 @@ If you have any questions or issues, please feel free to reach out to me.
 
 ## Showcase
 
-PomFocus is built to help you stay focused on your task, It's simple and user-friendly interface makes it easy to use for everyone. This application is perfect for students, professionals, or anyone looking to increase productivity. Use PomFocus to boost your productivity and achieve your goals.
+PomFocus is built to help you stay focused on your task, It's simple and user-friendly interface makes it easy to use for everyone. <br/>
+This application is perfect for students, professionals, or anyone looking to increase productivity. Use PomFocus to boost your productivity and achieve your goals.
