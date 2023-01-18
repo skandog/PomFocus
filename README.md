@@ -8,7 +8,6 @@ PomFocus is a simple and elegant focus application that helps users stay on task
 - Customizable countdown timer
 - Easy to use interface
 - Built with React Native
--
 
 ## Installation
 
