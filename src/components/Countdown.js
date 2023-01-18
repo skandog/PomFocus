@@ -7,8 +7,9 @@ import { fontSizes, spacingSizes } from "../utils/sizes";
 const minutesToMillis = (min) => min * 1000 * 60;
 const formatTime = (time) => (time < 10 ? `0${time}` : time);
 
-export const Countdown = ({ minutes = 20, isPaused, onProgress, onEnd }) => {
+export const Countdown = ({ minutes, isPaused, onProgress, onEnd }) => {
   const interval = React.useRef(null);
+  const [millis, setMillis] = useState(minutesToMillis(minutes));
 
   const countDown = () => {
     setMillis((time) => {
@@ -22,6 +23,10 @@ export const Countdown = ({ minutes = 20, isPaused, onProgress, onEnd }) => {
       return timeLeft;
     });
   };
+
+  useEffect(() => {
+    setMillis(minutesToMillis(minutes));
+  }, [minutes]);
 
   useEffect(() => {
     if (isPaused) {
@@ -38,15 +43,8 @@ export const Countdown = ({ minutes = 20, isPaused, onProgress, onEnd }) => {
     };
   }, [isPaused]);
 
-  useEffect(() => {
-    setMillis(minutesToMillis(minutes));
-  }, [minutes]);
-
-  const [millis, setMillis] = useState(minutesToMillis(minutes));
-
   const minute = Math.floor(millis / 1000 / 60) % 60;
   const seconds = Math.floor(millis / 1000) % 60;
-
   return (
     <View>
       <Text style={styles.text}>
