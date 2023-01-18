@@ -23,6 +23,9 @@ export const Countdown = ({ minutes = 20, isPaused, onProgress }) => {
 
   useEffect(() => {
     if (isPaused) {
+      if (interval.current) {
+        clearInterval(interval.current);
+      }
       return;
     }
 
