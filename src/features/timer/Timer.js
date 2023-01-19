@@ -11,7 +11,7 @@ import { Timing } from "./Timing";
 
 // const DEFAULT_TIME = 0.1;
 
-export const Timer = ({ focusSubject, onTimerEnd }) => {
+export const Timer = ({ focusSubject, onTimerEnd, clearSubject }) => {
   const [minutes, setMinutes] = useState(0.1);
   const [isStarted, setIsStarted] = useState(false);
   const [progress, setProgress] = useState(1);
@@ -86,9 +86,9 @@ export const Timer = ({ focusSubject, onTimerEnd }) => {
           }}
           textStyle={{}}
         />
-        <View>
-          <Button title="-" size={75} onPress={() => clearSubject()} />
-        </View>
+      </View>
+      <View style={styles.clearSubject}>
+        <Button title="-" size={50} onPress={() => clearSubject()} />
       </View>
     </View>
   );
@@ -100,13 +100,16 @@ const styles = StyleSheet.create({
     padding: spacingSizes.md,
     justifyContent: "center",
     alignItems: "center",
-    // marginTop: spacingSizes.md,
   },
   buttonContainerTiming: {
     flex: 0.3,
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
+  },
+  clearSubject: {
+    paddingBottom: 25,
+    paddingLeft: 25,
   },
   container: {
     flex: 1,

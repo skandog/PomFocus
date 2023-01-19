@@ -23,6 +23,7 @@ export default function App() {
           onTimerEnd={() => {
             setFocusSubject(null);
           }}
+          clearSubject={() => setFocusSubject(null)}
         />
       ) : (
         <Focus addSubject={setFocusSubject} />
