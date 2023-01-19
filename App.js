@@ -42,7 +42,7 @@ export default function App() {
             addFocusHistoryWithState(focusSubject, STATUSES.COMPLETE);
             setFocusSubject(null);
           }}
-          clearSubject={() => {
+          onCancel={() => {
             addFocusHistoryWithState(focusSubject, STATUSES.CANCELLED);
             setFocusSubject(null);
           }}
