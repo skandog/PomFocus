@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
@@ -19,10 +19,11 @@ export default function App() {
 
   useEffect(() => {
     if (focusSubject) {
-      setFocusHistory(...focusHistory, focusSubject);
+      setFocusHistory([...focusHistory, focusSubject]);
     }
   }, [focusSubject]);
 
+  console.log("focusHistory :>> ", focusHistory);
   return (
     <SafeAreaView style={styles.container}>
       {focusSubject ? (
