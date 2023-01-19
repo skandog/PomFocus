@@ -1,4 +1,4 @@
-import Reactm, { useState } from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, Text, Vibration, Platform } from "react-native";
 import { ProgressBar } from "react-native-paper";
 import { useKeepAwake } from "expo-keep-awake";
@@ -86,6 +86,9 @@ export const Timer = ({ focusSubject, onTimerEnd }) => {
           }}
           textStyle={{}}
         />
+        <View>
+          <Button title="-" size={75} onPress={() => clearSubject()} />
+        </View>
       </View>
     </View>
   );
