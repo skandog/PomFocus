@@ -15,6 +15,7 @@ import { Timer } from "./src/features/timer/Timer";
 
 export default function App() {
   const [focusSubject, setFocusSubject] = useState(null);
+  const [focusHistory, setFocusHistory] = useState([]);
   return (
     <SafeAreaView style={styles.container}>
       {focusSubject ? (
