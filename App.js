@@ -12,7 +12,7 @@ import {
 import { Focus } from "./src/features/focus/Focus";
 import { colors } from "./src/utils/colors";
 import { Timer } from "./src/features/timer/Timer";
-import { FocusHistory } from "./src/features/focus/FocusFistory";
+import { FocusHistory } from "./src/features/focus/FocusHistory";
 
 const STATUSES = {
   COMPLETE: 1,
@@ -33,9 +33,9 @@ export default function App() {
     setFocusHistory([...focusHistory, { subject, status }]);
   };
 
-const onClear = () => {
-  //do later
-}
+  const onClear = () => {
+    setFocusHistory([]);
+  };
 
   console.log("focusHistory :>> ", focusHistory);
   return (

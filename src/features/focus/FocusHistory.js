@@ -26,6 +26,15 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
             data={focusHistory}
             renderItem={HistoryItem}
           />
+          <View style={styles.clearContainer}>
+            <Button
+              size={50}
+              title="Clear"
+              onPress={() => {
+                clearHistory();
+              }}
+            />
+          </View>
         </>
       )}
     </SafeAreaView>
@@ -33,6 +42,9 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
 };
 
 const styles = StyleSheet.create({
+  clearContainer: {
+    flex: 1,
+  },
   historyItem: (status) => ({
     color: status > 1 ? "red" : "green",
     fontSize: fontSizes.md,
