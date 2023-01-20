@@ -3,9 +3,10 @@ import { View, StyleSheet, FlatList, Text, SafeAreaView } from "react-native";
 
 import { spacingSizes, fontSizes } from "../../utils/sizes";
 import { Button } from "../../components/Button";
+import { colors } from "../../utils/colors";
 
 const HistoryItem = ({ item, index }) => {
-  return <Text>{JSON.stringify(item)}</Text>;
+  return <Text style={styles.historyItem(item.status)}>{item.subject}</Text>;
 };
 
 export const FocusHistory = ({ focusHistory, onClear }) => {
@@ -14,16 +15,30 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 0.5 }}>
-      <Text>Items we've focussed on so far</Text>
+    <SafeAreaView style={{ flex: 0.5, alignItems: "center" }}>
       {!!focusHistory.length && (
-        <FlatList
-          style={{ flex: 1 }}
-          contentContainerStyle={{ flex: 1, alignItems: "center" }}
-          data={focusHistory}
-          renderItem={HistoryItem}
-        />
+        <>
+          <Text style={styles.title}>Items we've focussed on so far:</Text>
+
+          <FlatList
+            style={{ flex: 1 }}
+            contentContainerStyle={{ flex: 1, alignItems: "center" }}
+            data={focusHistory}
+            renderItem={HistoryItem}
+          />
+        </>
       )}
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  historyItem: (status) => ({
+    color: status > 1 ? "red" : "green",
+    fontSize: fontSizes.md,
+  }),
+  title: {
+    color: colors.white,
+    fontSize: fontSizes.lg,
+  },
+});
