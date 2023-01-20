@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, StyleSheet, FlatList, Text, SafeAreaView } from "react-native";
 
 import { spacingSizes, fontSizes } from "../../utils/sizes";
@@ -13,6 +13,7 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
   const clearHistory = () => {
     onClear();
   };
+
 
   return (
     <SafeAreaView style={{ flex: 0.5, alignItems: "center" }}>
@@ -44,6 +45,7 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
 const styles = StyleSheet.create({
   clearContainer: {
     flex: 1,
+    padding: spacingSizes.md,
   },
   historyItem: (status) => ({
     color: status > 1 ? "red" : "green",
