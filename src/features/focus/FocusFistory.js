@@ -4,14 +4,26 @@ import { View, StyleSheet, FlatList, Text, SafeAreaView } from "react-native";
 import { spacingSizes, fontSizes } from "../../utils/sizes";
 import { Button } from "../../components/Button";
 
-export const FocusHistory = ({ FocusHistory, onClear }) => {
+const HistoryItem = ({ item, index }) => {
+  return <Text>{JSON.stringify(item)}</Text>;
+};
+
+export const FocusHistory = ({ focusHistory, onClear }) => {
   const clearHistory = () => {
     onClear();
   };
 
   return (
-    <SafeAreaView>
-      <Text>Items we've focussed on so far</Text>{" "}
+    <SafeAreaView style={{ flex: 0.5 }}>
+      <Text>Items we've focussed on so far</Text>
+      {!!focusHistory.length && (
+        <FlatList
+          style={{ flex: 1 }}
+          contentContainerStyle={{ flex: 1, alignItems: "center" }}
+          data={focusHistory}
+          renderItem={HistoryItem}
+        />
+      )}
     </SafeAreaView>
   );
 };

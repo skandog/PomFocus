@@ -12,6 +12,7 @@ import {
 import { Focus } from "./src/features/focus/Focus";
 import { colors } from "./src/utils/colors";
 import { Timer } from "./src/features/timer/Timer";
+import { FocusHistory } from "./src/features/focus/FocusFistory";
 
 const STATUSES = {
   COMPLETE: 1,
@@ -32,6 +33,10 @@ export default function App() {
     setFocusHistory([...focusHistory, { subject, status }]);
   };
 
+const onClear = () => {
+  //do later
+}
+
   console.log("focusHistory :>> ", focusHistory);
   return (
     <SafeAreaView style={styles.container}>
@@ -48,11 +53,11 @@ export default function App() {
           }}
         />
       ) : (
-        <Focus addSubject={setFocusSubject} />
+        <>
+          <Focus addSubject={setFocusSubject} />
+          <FocusHistory focusHistory={focusHistory} onClear={onClear} />
+        </>
       )}
-      {/* <Text style={{ color: "#ffd", border: "1 solid #fff" }}>
-        {focusSubject}
-      </Text> */}
 
       {/* <StatusBar /> */}
     </SafeAreaView>
