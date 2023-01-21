@@ -14,7 +14,6 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
     onClear();
   };
 
-
   return (
     <SafeAreaView style={{ flex: 0.5, alignItems: "center" }}>
       {!!focusHistory.length && (
@@ -48,8 +47,11 @@ const styles = StyleSheet.create({
     padding: spacingSizes.md,
   },
   historyItem: (status) => ({
-    color: status > 1 ? "red" : "green",
+    color: status > 1 ? colors.red : colors.green,
     fontSize: fontSizes.md,
+    textShadowColor: "rgba(355, 355, 355, 0.1)",
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 2,
   }),
   title: {
     color: colors.white,
