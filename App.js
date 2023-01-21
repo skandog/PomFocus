@@ -39,16 +39,14 @@ export default function App() {
     try {
       await AsyncStorage.setItem("focusHistory", JSON.stringify(focusHistory));
 
-      console.log("focusHistory :>> ", focusHistory);
     } catch (e) {
-      console.log(e);
+      console.log('e :>> ', e);
     }
   };
 
   const loadFocusHistory = async () => {
     try {
       const history = await AsyncStorage.getItem("focusHistory");
-      console.log(history);
 
       if (history && JSON.parse(history).length) {
         setFocusHistory(JSON.parse(history));
