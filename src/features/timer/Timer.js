@@ -9,14 +9,12 @@ import { Countdown } from "../../components/Countdown";
 import { Button } from "../../components/Button";
 import { Timing } from "./Timing";
 
-// const DEFAULT_TIME = 0.1;
+const DEFAULT_TIME = 0.1;
 
 export const Timer = ({ focusSubject, onTimerEnd, onCancel }) => {
-  const [minutes, setMinutes] = useState(0.1);
+  const [minutes, setMinutes] = useState(DEFAULT_TIME);
   const [isStarted, setIsStarted] = useState(false);
   const [progress, setProgress] = useState(1);
-
-  // useKeepAwake();
 
   const onProgress = (progress) => {
     setProgress(progress);
@@ -46,7 +44,7 @@ export const Timer = ({ focusSubject, onTimerEnd, onCancel }) => {
   const onEnd = () => {
     setProgress(1);
     setIsStarted(false);
-    setMinutes(0.1);
+    setMinutes(DEFAULT_TIME);
     vibrate();
     onTimerEnd();
   };

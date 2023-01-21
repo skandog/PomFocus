@@ -38,9 +38,8 @@ export default function App() {
   const saveFocusHistory = async () => {
     try {
       await AsyncStorage.setItem("focusHistory", JSON.stringify(focusHistory));
-
     } catch (e) {
-      console.log('e :>> ', e);
+      console.log("e :>> ", e);
     }
   };
 
@@ -64,7 +63,6 @@ export default function App() {
     saveFocusHistory();
   }, [focusHistory]);
 
-  console.log("focusHistory :>> ", focusHistory);
   return (
     <SafeAreaView style={styles.container}>
       {focusSubject ? (
@@ -94,8 +92,5 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.primary,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-
-    // alignItems: "center",
-    // justifyContent: "center",
   },
 });
