@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Alert } from "react-native";
 import { TextInput } from "react-native-paper";
 
 import { Button } from "../../components/Button";
@@ -29,6 +29,13 @@ export const Focus = ({ addSubject }) => {
             title={"+"}
             size={50}
             onPress={() => {
+              if (!subject) {
+                Alert.alert(
+                  "Error",
+                  "Please enter an activity you would like to focus on"
+                );
+                return;
+              }
               addSubject(subject);
             }}
           />
@@ -50,7 +57,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     paddingTop: spacingSizes.md,
     flexDirection: "row",
-    // justifyContent: "center",
     alignItems: "center",
   },
   textInput: {
