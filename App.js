@@ -24,12 +24,6 @@ export default function App() {
   const [focusSubject, setFocusSubject] = useState(null);
   const [focusHistory, setFocusHistory] = useState([]);
 
-  // useEffect(() => {
-  //   if (focusSubject) {
-  //     setFocusHistory([...focusHistory, focusSubject]);
-  //   }
-  // }, [focusSubject]);
-
   const addFocusHistoryWithState = (subject, status) => {
     setFocusHistory([...focusHistory, { subject, status }]);
   };
@@ -85,13 +79,11 @@ export default function App() {
           }}
         />
       ) : (
-        <>
+        <View style={{ flex: 1 }}>
           <Focus addSubject={setFocusSubject} />
           <FocusHistory focusHistory={focusHistory} onClear={onClear} />
-        </>
+        </View>
       )}
-
-      {/* <StatusBar /> */}
     </SafeAreaView>
   );
 }
