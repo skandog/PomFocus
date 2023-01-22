@@ -6,6 +6,7 @@ import {
   Platform,
   StatusBar,
   SafeAreaView,
+  ImageBackground,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -63,33 +64,45 @@ export default function App() {
   }, [focusHistory]);
 
   return (
-    <SafeAreaView style={styles.container}>
-      {focusSubject ? (
-        <Timer
-          focusSubject={focusSubject}
-          onTimerEnd={() => {
-            addFocusHistoryWithStatus(focusSubject, STATUSES.COMPLETE);
-            setFocusSubject(null);
-          }}
-          onCancel={() => {
-            addFocusHistoryWithStatus(focusSubject, STATUSES.CANCELLED);
-            setFocusSubject(null);
-          }}
-        />
-      ) : (
-        <View style={{ flex: 1 }}>
-          <Focus addSubject={setFocusSubject} />
-          <FocusHistory focusHistory={focusHistory} onClear={onClear} />
-        </View>
-      )}
-    </SafeAreaView>
+    <ImageBackground
+      style={styles.background}
+      resizeMethod='auto'
+      resizeMode="cover"
+      source={require("./assets/space_background.jpg")}
+    >
+      <View style={styles.container}>
+        {focusSubject ? (
+          <Timer
+            focusSubject={focusSubject}
+            onTimerEnd={() => {
+              addFocusHistoryWithStatus(focusSubject, STATUSES.COMPLETE);
+              setFocusSubject(null);
+            }}
+            onCancel={() => {
+              addFocusHistoryWithStatus(focusSubject, STATUSES.CANCELLED);
+              setFocusSubject(null);
+            }}
+          />
+        ) : (
+          <View style={{ flex: 1 }}>
+            <Focus addSubject={setFocusSubject} />
+            <FocusHistory focusHistory={focusHistory} onClear={onClear} />
+          </View>
+        )}
+      </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  background: {
     flex: 1,
-    backgroundColor: colors.primary,
+    height: "100%",
+    justifyContent: "flex-end",
+    alignItems: "center",
+  },
+  container: {
+    // backgroundColor: colors.primary,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
 });
