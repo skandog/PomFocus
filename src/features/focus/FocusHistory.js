@@ -47,10 +47,14 @@ const styles = StyleSheet.create({
     padding: spacingSizes.md,
   },
   historyItem: (status) => ({
-    color: status > 1 ? colors.red : colors.green,
+    color: status > 1 ? colors.incomplete : colors.complete,
+    // color: colors.white,
     fontSize: fontSizes.md,
-    textShadowColor: "rgba(355, 355, 355, 0.1)",
-    textShadowOffset: { width: 1, height: 1 },
+    textShadowColor: colors.white,
+
+    // textShadowColor:
+    //   status > 1 ? "rgba(143, 355, 355, 0.9)" : "rgba(355, 143, 355, 0.9)",
+    textShadowOffset: { width: -1, height: -1 },
     textShadowRadius: 2,
   }),
   title: {
