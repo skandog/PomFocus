@@ -66,9 +66,9 @@ export default function App() {
   return (
     <ImageBackground
       style={styles.background}
-      resizeMethod='auto'
+      resizeMethod="auto"
       resizeMode="cover"
-      source={require("./assets/space_background.jpg")}
+      source={require("./assets/saturate_space_background.jpg")}
     >
       <View style={styles.container}>
         {focusSubject ? (
