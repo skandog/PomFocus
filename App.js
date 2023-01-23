@@ -89,11 +89,12 @@ export default function App() {
             <Focus addSubject={setFocusSubject} />
 
             <FocusHistory
-              focusHistory={
-                useKeyboardVisible() && focusHistory.length > 3
-                  ? focusHistory.slice(0, 4)
-                  : focusHistory
-              }
+              // focusHistory={
+              //   useKeyboardVisible() && focusHistory.length > 3
+              //     ? focusHistory.slice(0, 4)
+              //     : focusHistory
+              // }
+              focusHistory={focusHistory}
               onClear={onClear}
             />
           </View>
@@ -108,7 +109,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: "100%",
     justifyContent: "flex-end",
-    alignItems: "center",
+    alignItems: "stretch",
   },
   container: {
     display: "flex",

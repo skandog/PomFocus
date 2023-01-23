@@ -5,6 +5,7 @@ export const colors = {
   fourth: "#091833",
   white: "#f4f0f4",
   black: "#0e0b0f",
+  gold: "#FFD700",
   complete: "#72936c",
   complete: "rgba(355, 143, 355, 0.9)",
   // incomplete: '#8f0000'
