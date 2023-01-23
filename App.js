@@ -109,17 +109,23 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     height: "100%",
-    justifyContent: "flex-end",
+    justifyContent: "flex-start",
     alignItems: "center",
   },
   container: {
+    borderWidth: 2,
+    borderColor: colors.secondary,
     // backgroundColor: colors.primary,
+    display: "flex",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     flex: 1,
-    alignItems: "flex-start",
+    // justifyContent: 'flex-start'
+    // alignItems: "flex-end",
   },
   focusContainer: {
     // backgroundColor: colors.white,
     flex: 1,
+    flexDirection: "column",
+    justifyContent: "flex-start",
   },
 });
