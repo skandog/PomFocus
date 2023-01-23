@@ -4,6 +4,7 @@ import { View, StyleSheet, FlatList, Text, SafeAreaView } from "react-native";
 import { spacingSizes, fontSizes } from "../../utils/sizes";
 import { Button } from "../../components/Button";
 import { colors } from "../../utils/colors";
+import { useKeyboardVisible } from "../../hooks/useKeyboardVisible";
 
 const HistoryItem = ({ item, index }) => {
   return <Text style={styles.historyItem(item.status)}>{item.subject}</Text>;
@@ -14,6 +15,17 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
     onClear();
   };
 
+  const workingHistory = [];
+
+  // useEffect(() => {
+  //   if (useKeyboardVisible()) {
+  //     workingHistory = focusHistory.slice(0, 3);
+  //     return;
+  //   }
+
+  //   workingHistory = focusHistory;
+  // }, [useKeyboardVisible()]);
+
   return (
     <SafeAreaView style={styles.container}>
       {!!focusHistory.length && (
@@ -23,7 +35,9 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
           <FlatList
             style={{ flex: 1 }}
             contentContainerStyle={{ flex: 1, alignItems: "center" }}
-            data={focusHistory}
+            data={
+              useKeyboardVisible() ? focusHistory.slice(0, 4) : focusHistory
+            }
             renderItem={HistoryItem}
           />
           <View style={styles.clearContainer}>

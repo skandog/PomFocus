@@ -64,6 +64,7 @@ export default function App() {
     saveFocusHistory();
   }, [focusHistory]);
 
+
   return (
     <ImageBackground
       style={styles.background}
