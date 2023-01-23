@@ -10,48 +10,42 @@ export const Focus = ({ addSubject }) => {
   const [subject, setSubject] = useState(null);
 
   return (
-   
-      <View style={styles.container}>
-        <View style={styles.innerContainer}>
-          <Text style={styles.title}>What you working on?</Text>
-          <View style={styles.inputContainer}>
-            <TextInput
-              style={styles.textInput}
-              onChange={({ nativeEvent }) => {
-                console.log(nativeEvent);
+    <View style={styles.container}>
+      <View style={styles.innerContainer}>
+        <Text style={styles.title}>What you working on?</Text>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.textInput}
+            onChange={({ nativeEvent }) => {
+              console.log(nativeEvent);
 
-                setSubject(nativeEvent.text);
-              }}
-              onSubmitEditing={() => {
-                addSubject(subject);
-              }}
-            />
-            <Button
-              title={"+"}
-              size={50}
-              onPress={() => {
-                if (!subject) {
-                  Alert.alert(
-                    "Error",
-                    "Please enter an activity you would like to focus on"
-                  );
-                  return;
-                }
-                addSubject(subject);
-              }}
-            />
-          </View>
+              setSubject(nativeEvent.text);
+            }}
+            onSubmitEditing={() => {
+              addSubject(subject);
+            }}
+          />
+          <Button
+            title={"+"}
+            size={50}
+            onPress={() => {
+              if (!subject) {
+                Alert.alert(
+                  "Error",
+                  "Please enter an activity you would like to focus on"
+                );
+                return;
+              }
+              addSubject(subject);
+            }}
+          />
         </View>
       </View>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    justifyContent: "flex-end",
-    alignItems: "center",
-  },
   container: {
     flex: 0.5,
   },

@@ -14,6 +14,7 @@ import { Focus } from "./src/features/focus/Focus";
 import { colors } from "./src/utils/colors";
 import { Timer } from "./src/features/timer/Timer";
 import { FocusHistory } from "./src/features/focus/FocusHistory";
+import { useKeyboardVisible } from "./src/hooks/useKeyboardVisible";
 
 const STATUSES = {
   COMPLETE: 1,
@@ -55,6 +56,8 @@ export default function App() {
     }
   };
 
+  console.log(useKeyboardVisible());
+
   useEffect(() => {
     loadFocusHistory();
   }, []);
@@ -84,9 +87,17 @@ export default function App() {
             }}
           />
         ) : (
-          <View style={{ flex: 1 }}>
+          <View style={styles.focusContainer}>
             <Focus addSubject={setFocusSubject} />
-            <FocusHistory focusHistory={focusHistory} onClear={onClear} />
+
+            <FocusHistory
+              focusHistory={
+                useKeyboardVisible() && focusHistory.length > 3
+                  ? focusHistory.slice(0, 4)
+                  : focusHistory
+              }
+              onClear={onClear}
+            />
           </View>
         )}
       </View>
@@ -104,5 +115,11 @@ const styles = StyleSheet.create({
   container: {
     // backgroundColor: colors.primary,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    flex: 1,
+    alignItems: "flex-start",
+  },
+  focusContainer: {
+    // backgroundColor: colors.white,
+    flex: 1,
   },
 });
