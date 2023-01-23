@@ -17,7 +17,7 @@ export const Focus = ({ addSubject }) => {
           <TextInput
             style={styles.textInput}
             onChange={({ nativeEvent }) => {
-              console.log(nativeEvent);
+              // console.log(nativeEvent);
 
               setSubject(nativeEvent.text);
             }}

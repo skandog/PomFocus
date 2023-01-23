@@ -18,7 +18,7 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
     <SafeAreaView style={styles.container}>
       {!!focusHistory.length && (
         <>
-          <Text style={styles.title}>Items we've focussed on so far:</Text>
+          <Text style={styles.title}>Items we've focussed on recently:</Text>
 
           <FlatList
             style={{ flex: 1 }}
@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 0.5,
     alignItems: "center",
-
   },
   historyItem: (status) => ({
     color: status > 1 ? colors.incomplete : colors.complete,
