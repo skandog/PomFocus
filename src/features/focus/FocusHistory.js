@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
 
     // textShadowColor:
     //   status > 1 ? "rgba(143, 355, 355, 0.9)" : "rgba(355, 143, 355, 0.9)",
-    textShadowOffset: { width: -1, height: -1 },
+    textShadowOffset: { width: -0.8, height: -0.8 },
     textShadowRadius: 2,
   }),
   title: {
