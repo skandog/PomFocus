@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, StyleSheet, Alert } from "react-native";
+import { Text, View, StyleSheet, Alert, ImageBackground } from "react-native";
 import { TextInput } from "react-native-paper";
 
 import { Button } from "../../components/Button";
@@ -17,7 +17,7 @@ export const Focus = ({ addSubject }) => {
           <TextInput
             style={styles.textInput}
             onChange={({ nativeEvent }) => {
-              console.log(nativeEvent);
+              // console.log(nativeEvent);
 
               setSubject(nativeEvent.text);
             }}

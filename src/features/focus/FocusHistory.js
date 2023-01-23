@@ -15,10 +15,10 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 0.5, alignItems: "center" }}>
+    <SafeAreaView style={styles.container}>
       {!!focusHistory.length && (
         <>
-          <Text style={styles.title}>Items we've focussed on so far:</Text>
+          <Text style={styles.title}>Items we've focussed on recently:</Text>
 
           <FlatList
             style={{ flex: 1 }}
@@ -46,11 +46,19 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: spacingSizes.md,
   },
+  container: {
+    flex: 0.5,
+    alignItems: "center",
+  },
   historyItem: (status) => ({
-    color: status > 1 ? colors.red : colors.green,
+    color: status > 1 ? colors.incomplete : colors.complete,
+    // color: colors.white,
     fontSize: fontSizes.md,
-    textShadowColor: "rgba(355, 355, 355, 0.1)",
-    textShadowOffset: { width: 1, height: 1 },
+    textShadowColor: colors.white,
+
+    // textShadowColor:
+    //   status > 1 ? "rgba(143, 355, 355, 0.9)" : "rgba(355, 143, 355, 0.9)",
+    textShadowOffset: { width: -1, height: -1 },
     textShadowRadius: 2,
   }),
   title: {

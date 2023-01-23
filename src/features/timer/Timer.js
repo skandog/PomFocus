@@ -66,7 +66,7 @@ export const Timer = ({ focusSubject, onTimerEnd, onCancel }) => {
       <View style={styles.progressContainer}>
         <ProgressBar
           progress={progress}
-          color={colors.secondary}
+          color={colors.third}
           style={styles.progress}
         />
       </View>
