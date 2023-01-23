@@ -49,8 +49,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 0.5,
     alignItems: "center",
-    borderWidth: 2,
-    borderColor: colors.white,
+
   },
   historyItem: (status) => ({
     color: status > 1 ? colors.incomplete : colors.complete,

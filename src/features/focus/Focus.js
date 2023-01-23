@@ -48,8 +48,6 @@ export const Focus = ({ addSubject }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 0.5,
-    borderWidth: 2,
-    borderColor: colors.white,
   },
   innerContainer: {
     flex: 1,
