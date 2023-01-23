@@ -56,8 +56,6 @@ export default function App() {
     }
   };
 
-  console.log(useKeyboardVisible());
-
   useEffect(() => {
     loadFocusHistory();
   }, []);
