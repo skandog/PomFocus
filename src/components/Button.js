@@ -44,5 +44,7 @@ const styles = (size) =>
     text: {
       color: colors.white,
       fontSize: size / 3.5,
+      textShadowColor: colors.third,
+      textShadowRadius: 8,
     },
   });

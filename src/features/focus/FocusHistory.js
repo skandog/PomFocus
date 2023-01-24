@@ -98,6 +98,7 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
             <View style={styles.clearContainer}>
               <Button
                 size={60}
+                style={{ width: 100 }}
                 title="Clear"
                 onPress={() => {
                   clearHistory();
