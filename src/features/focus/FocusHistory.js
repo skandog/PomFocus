@@ -22,14 +22,7 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
       {!!focusHistory.length && (
         <>
           <Text style={styles.title}>Items we've focussed on recently:</Text>
-          <View
-            style={{
-              flexDirection: "row",
-              width: "100%",
-              justifyContent: "space-around",
-              paddingTop: 5,
-            }}
-          >
+          <View style={styles.legend}>
             <Text
               style={[
                 styles.historyItem(1),
@@ -97,16 +90,14 @@ const styles = StyleSheet.create({
     color: status > 1 ? colors.incomplete : colors.complete,
     fontSize: fontSizes.md,
     textShadowColor: colors.white,
-
-    // // Left here from a previous implementation using colored glow
-    // // But text shadow in Native is a nightmare
-    // // Delete as you see fit
-    // color: colors.white,
-    // textShadowColor:
-    //   status > 1 ? "rgba(143, 355, 355, 0.9)" : "rgba(355, 143, 355, 0.9)",
-    // textShadowOffset: { width: -0.8, height: -0.8 },
     textShadowRadius: 4,
   }),
+  legend: {
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "space-around",
+    paddingTop: 5,
+  },
   title: {
     color: colors.white,
     fontSize: fontSizes.lg,
