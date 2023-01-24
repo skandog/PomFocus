@@ -15,17 +15,6 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
     onClear();
   };
 
-  const workingHistory = [];
-
-  // useEffect(() => {
-  //   if (useKeyboardVisible()) {
-  //     workingHistory = focusHistory.slice(0, 3);
-  //     return;
-  //   }
-
-  //   workingHistory = focusHistory;
-  // }, [useKeyboardVisible()]);
-
   return (
     <SafeAreaView style={styles.container}>
       {!!focusHistory.length && (
@@ -34,7 +23,12 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
 
           <FlatList
             style={{ flex: 1 }}
-            contentContainerStyle={{ flex: 1, alignItems: "center" }}
+            contentContainerStyle={{
+              flex: 1,
+              alignItems: "center",
+              justifyContent: "flex-start",
+            }}
+            // numColumns={2}
             data={
               useKeyboardVisible() ? focusHistory.slice(0, 4) : focusHistory
             }
@@ -57,11 +51,11 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
 
 const styles = StyleSheet.create({
   clearContainer: {
-    flex: 1,
+    flex: 0.5,
     padding: spacingSizes.md,
   },
   container: {
-    flex: 0.5,
+    flex: 1,
     alignItems: "center",
   },
   historyItem: (status) => ({
