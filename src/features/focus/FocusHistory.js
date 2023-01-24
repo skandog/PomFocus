@@ -17,7 +17,7 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
   console.log("focusHistory :>> ", focusHistory);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       {!!focusHistory.length && (
         <>
           <Text style={styles.title}>Items we've focussed on recently:</Text>
@@ -47,7 +47,7 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
           </View>
         </>
       )}
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "white",
     width: "90%",
+    // backgroundColor: "white",
   },
   flatListContainer: {
     flex: 1,
@@ -82,5 +82,6 @@ const styles = StyleSheet.create({
   title: {
     color: colors.white,
     fontSize: fontSizes.lg,
+    alignSelf: 'flex-start'
   },
 });
