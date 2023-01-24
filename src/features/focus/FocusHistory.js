@@ -5,6 +5,7 @@ import { spacingSizes, fontSizes } from "../../utils/sizes";
 import { Button } from "../../components/Button";
 import { colors } from "../../utils/colors";
 import { useKeyboardVisible } from "../../hooks/useKeyboardVisible";
+
 const HistoryItem = ({ item, index }) => {
   return <Text style={styles.historyItem(item.status)}>{item.subject}</Text>;
 };
@@ -21,6 +22,31 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
       {!!focusHistory.length && (
         <>
           <Text style={styles.title}>Items we've focussed on recently:</Text>
+          <View
+            style={{
+              flexDirection: "row",
+              width: "100%",
+              justifyContent: "space-around",
+              paddingTop: 5,
+            }}
+          >
+            <Text
+              style={[
+                styles.historyItem(1),
+                { textDecorationLine: "underline" },
+              ]}
+            >
+              Completed
+            </Text>
+            <Text
+              style={[
+                styles.historyItem(2),
+                { textDecorationLine: "underline" },
+              ]}
+            >
+              Cancelled
+            </Text>
+          </View>
           <View style={{ flex: 1 }}>
             <FlatList
               style={styles.flatListContainer}
@@ -82,6 +108,6 @@ const styles = StyleSheet.create({
   title: {
     color: colors.white,
     fontSize: fontSizes.lg,
-    alignSelf: 'flex-start'
+    alignSelf: "flex-start",
   },
 });
