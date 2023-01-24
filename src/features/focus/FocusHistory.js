@@ -23,7 +23,7 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
         <>
           <Text style={styles.title}>Items we've focussed on recently:</Text>
 
-          <MyFlatList data={focusHistory} styles={styles.container} />
+          <MyFlatList data={focusHistory} style={styles.flatListContainer} />
           {/* <FlatList
             style={{ flex: 1 }}
             contentContainerStyle={{
@@ -61,6 +61,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+  },
+  flatListContainer: {
+    flex: 1,
+    justifyContent: "flex-start",
+    paddingTop: 20,
   },
   historyItem: (status) => ({
     color: status > 1 ? colors.incomplete : colors.complete,
