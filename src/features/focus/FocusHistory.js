@@ -88,7 +88,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "90%",
-    // backgroundColor: "white",
   },
   flatListContainer: {
     flex: 1,
@@ -96,10 +95,13 @@ const styles = StyleSheet.create({
   },
   historyItem: (status) => ({
     color: status > 1 ? colors.incomplete : colors.complete,
-    // color: colors.white,
     fontSize: fontSizes.md,
     textShadowColor: colors.white,
 
+    // // Left here from a previous implementation using colored glow
+    // // But text shadow in Native is a nightmare
+    // // Delete as you see fit
+    // color: colors.white,
     // textShadowColor:
     //   status > 1 ? "rgba(143, 355, 355, 0.9)" : "rgba(355, 143, 355, 0.9)",
     // textShadowOffset: { width: -0.8, height: -0.8 },
