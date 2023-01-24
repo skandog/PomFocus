@@ -69,5 +69,7 @@ const styles = StyleSheet.create({
     color: colors.white,
     padding: spacingSizes.lg,
     backgroundColor: "rgba(141, 141, 154, 0.4)",
+    textShadowColor: colors.third,
+    textShadowRadius: 12,
   },
 });

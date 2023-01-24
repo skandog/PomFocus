@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from "react";
-// import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
   View,
   Platform,
   StatusBar,
-  SafeAreaView,
   ImageBackground,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { Focus } from "./src/features/focus/Focus";
-import { colors } from "./src/utils/colors";
 import { Timer } from "./src/features/timer/Timer";
 import { FocusHistory } from "./src/features/focus/FocusHistory";
-import { useKeyboardVisible } from "./src/hooks/useKeyboardVisible";
 
 const STATUSES = {
   COMPLETE: 1,
@@ -64,7 +60,6 @@ export default function App() {
     saveFocusHistory();
   }, [focusHistory]);
 
-
   return (
     <ImageBackground
       style={styles.background}
@@ -72,6 +67,7 @@ export default function App() {
       resizeMode="cover"
       source={require("./assets/saturate_space_background.jpg")}
     >
+      <StatusBar barStyle={"light-content"} />
       <View style={styles.container}>
         {focusSubject ? (
           <Timer
@@ -89,15 +85,7 @@ export default function App() {
           <View style={styles.focusContainer}>
             <Focus addSubject={setFocusSubject} />
 
-            <FocusHistory
-              // focusHistory={
-              //   useKeyboardVisible() && focusHistory.length > 3
-              //     ? focusHistory.slice(0, 4)
-              //     : focusHistory
-              // }
-              focusHistory={focusHistory}
-              onClear={onClear}
-            />
+            <FocusHistory focusHistory={focusHistory} onClear={onClear} />
           </View>
         )}
       </View>
@@ -118,8 +106,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   focusContainer: {
-    flex: 1,
-    flexDirection: "column",
+    flex: 0.9,
     justifyContent: "flex-start",
+    alignItems: "center",
   },
 });

@@ -17,8 +17,6 @@ export const Focus = ({ addSubject }) => {
           <TextInput
             style={styles.textInput}
             onChange={({ nativeEvent }) => {
-              // console.log(nativeEvent);
-
               setSubject(nativeEvent.text);
             }}
             onSubmitEditing={() => {
@@ -28,6 +26,7 @@ export const Focus = ({ addSubject }) => {
           <Button
             title={"+"}
             size={50}
+            textStyle={{ fontSize: 28 }}
             onPress={() => {
               if (!subject) {
                 Alert.alert(
@@ -48,14 +47,16 @@ export const Focus = ({ addSubject }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 0.5,
+    width: "90%",
+    alignItems: "center",
   },
   innerContainer: {
     flex: 1,
-    padding: spacingSizes.md,
     justifyContent: "center",
   },
   inputContainer: {
     paddingTop: spacingSizes.md,
+    width: "100%",
     flexDirection: "row",
     alignItems: "center",
   },
@@ -67,5 +68,8 @@ const styles = StyleSheet.create({
     color: colors.white,
     fontWeight: "bold",
     fontSize: fontSizes.lg,
+    justifyContent: "center",
+    textShadowColor: colors.third,
+    textShadowRadius: 20,
   },
 });

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Text, Vibration, Platform } from "react-native";
 import { ProgressBar } from "react-native-paper";
-import { useKeepAwake } from "expo-keep-awake";
 
 import { colors } from "../../utils/colors";
 import { spacingSizes } from "../../utils/sizes";
@@ -9,7 +8,7 @@ import { Countdown } from "../../components/Countdown";
 import { Button } from "../../components/Button";
 import { Timing } from "./Timing";
 
-const DEFAULT_TIME = 0.1;
+const DEFAULT_TIME = 0.05;
 
 export const Timer = ({ focusSubject, onTimerEnd, onCancel }) => {
   const [minutes, setMinutes] = useState(DEFAULT_TIME);
@@ -86,7 +85,12 @@ export const Timer = ({ focusSubject, onTimerEnd, onCancel }) => {
         />
       </View>
       <View style={styles.clearSubject}>
-        <Button title="-" size={50} onPress={() => onCancel()} />
+        <Button
+          title="Cancel"
+          size={50}
+          style={{ width: 75 }}
+          onPress={() => onCancel()}
+        />
       </View>
     </View>
   );
@@ -105,9 +109,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
   },
-  onCancel: {
+  clearSubject: {
     paddingBottom: 25,
-    paddingLeft: 25,
+    paddingRight: 25,
+    alignItems: "flex-end",
   },
   container: {
     flex: 1,
