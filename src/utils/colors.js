@@ -8,6 +8,5 @@ export const colors = {
   gold: "#FFD700",
   complete: "#72936c",
   complete: "rgba(355, 143, 355, 0.9)",
-  // incomplete: '#8f0000'
   incomplete: "rgba(143, 355, 355, 0.9)",
 };

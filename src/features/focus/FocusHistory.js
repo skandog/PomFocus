@@ -1,14 +1,10 @@
-import React, { useEffect } from "react";
-import { View, StyleSheet, FlatList, Text, SafeAreaView } from "react-native";
+import React from "react";
+import { View, StyleSheet, FlatList, Text } from "react-native";
 
 import { spacingSizes, fontSizes } from "../../utils/sizes";
 import { Button } from "../../components/Button";
 import { colors } from "../../utils/colors";
 import { useKeyboardVisible } from "../../hooks/useKeyboardVisible";
-
-const HistoryItem = ({ item, index }) => {
-  return <Text style={styles.historyItem(item.status)}>{item.subject}</Text>;
-};
 
 const CompletedItem = ({ item, index }) => {
   return (
@@ -34,8 +30,6 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
   const clearHistory = () => {
     onClear();
   };
-
-  console.log("focusHistory :>> ", focusHistory);
 
   return (
     <View style={styles.container}>
