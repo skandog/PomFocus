@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from "react";
-// import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
   View,
   Platform,
   StatusBar,
-  SafeAreaView,
   ImageBackground,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { Focus } from "./src/features/focus/Focus";
-import { colors } from "./src/utils/colors";
 import { Timer } from "./src/features/timer/Timer";
 import { FocusHistory } from "./src/features/focus/FocusHistory";
-import { useKeyboardVisible } from "./src/hooks/useKeyboardVisible";
 
 const STATUSES = {
   COMPLETE: 1,
@@ -111,7 +107,6 @@ const styles = StyleSheet.create({
   },
   focusContainer: {
     flex: 0.9,
-    // flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center",
   },

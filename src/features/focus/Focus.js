@@ -49,11 +49,9 @@ const styles = StyleSheet.create({
     flex: 0.5,
     width: "90%",
     alignItems: "center",
-    // backgroundColor: "white",
   },
   innerContainer: {
     flex: 1,
-    // padding: spacingSizes.md,
     justifyContent: "center",
   },
   inputContainer: {
