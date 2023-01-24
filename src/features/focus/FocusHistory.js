@@ -4,8 +4,7 @@ import { View, StyleSheet, FlatList, Text, SafeAreaView } from "react-native";
 import { spacingSizes, fontSizes } from "../../utils/sizes";
 import { Button } from "../../components/Button";
 import { colors } from "../../utils/colors";
-import { MyFlatList } from "../../components/MyFlatList";
-
+import { useKeyboardVisible } from "../../hooks/useKeyboardVisible";
 const HistoryItem = ({ item, index }) => {
   return <Text style={styles.historyItem(item.status)}>{item.subject}</Text>;
 };
@@ -22,30 +21,29 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
       {!!focusHistory.length && (
         <>
           <Text style={styles.title}>Items we've focussed on recently:</Text>
-
-          <MyFlatList data={focusHistory} style={styles.flatListContainer} />
-          {/* <FlatList
-            style={{ flex: 1 }}
-            contentContainerStyle={{
-              flex: 1,
-              alignItems: "center",
-              justifyContent: "flex-start",
-            }}
-            keyExtractor={(item) => item.key}
-            // numColumns={2}
-            data={
-              useKeyboardVisible() ? focusHistory.slice(0, 4) : focusHistory
-            }
-            renderItem={HistoryItem}
-          /> */}
-          <View style={styles.clearContainer}>
-            <Button
-              size={50}
-              title="Clear"
-              onPress={() => {
-                clearHistory();
+          <View style={{ flex: 1 }}>
+            <FlatList
+              style={styles.flatListContainer}
+              contentContainerStyle={{
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "flex-start",
               }}
+              keyExtractor={(item) => item.key}
+              data={
+                useKeyboardVisible() ? focusHistory.slice(0, 4) : focusHistory
+              }
+              renderItem={HistoryItem}
             />
+            <View style={styles.clearContainer}>
+              <Button
+                size={50}
+                title="Clear"
+                onPress={() => {
+                  clearHistory();
+                }}
+              />
+            </View>
           </View>
         </>
       )}
@@ -55,17 +53,20 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
 
 const styles = StyleSheet.create({
   clearContainer: {
-    flex: 0.5,
+    flex: 0,
     padding: spacingSizes.md,
+    alignSelf: "flex-start",
   },
   container: {
     flex: 1,
     alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "white",
+    width: "90%",
   },
   flatListContainer: {
     flex: 1,
-    justifyContent: "flex-start",
-    paddingTop: 20,
+    paddingTop: 10,
   },
   historyItem: (status) => ({
     color: status > 1 ? colors.incomplete : colors.complete,

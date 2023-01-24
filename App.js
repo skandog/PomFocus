@@ -64,7 +64,6 @@ export default function App() {
     saveFocusHistory();
   }, [focusHistory]);
 
-
   return (
     <ImageBackground
       style={styles.background}
@@ -72,6 +71,7 @@ export default function App() {
       resizeMode="cover"
       source={require("./assets/saturate_space_background.jpg")}
     >
+      <StatusBar barStyle={"light-content"} />
       <View style={styles.container}>
         {focusSubject ? (
           <Timer
@@ -89,15 +89,7 @@ export default function App() {
           <View style={styles.focusContainer}>
             <Focus addSubject={setFocusSubject} />
 
-            <FocusHistory
-              // focusHistory={
-              //   useKeyboardVisible() && focusHistory.length > 3
-              //     ? focusHistory.slice(0, 4)
-              //     : focusHistory
-              // }
-              focusHistory={focusHistory}
-              onClear={onClear}
-            />
+            <FocusHistory focusHistory={focusHistory} onClear={onClear} />
           </View>
         )}
       </View>
@@ -118,8 +110,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   focusContainer: {
-    flex: 1,
-    flexDirection: "column",
+    flex: 0.9,
+    // flexDirection: "column",
     justifyContent: "flex-start",
+    alignItems: "center",
   },
 });

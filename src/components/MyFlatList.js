@@ -1,3 +1,9 @@
+/*
+This compoent was designed to provide two columns if the number ofi tems 
+exceeded a certain limit. However styling the flat list comonent 
+proved a nightmare, so saving this for a future release.
+*/
+
 import { FlatList, Text, StyleSheet } from "react-native";
 import React, { useState, useEffect } from "react";
 import { colors } from "../utils/colors";
