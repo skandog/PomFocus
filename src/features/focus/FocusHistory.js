@@ -10,6 +10,26 @@ const HistoryItem = ({ item, index }) => {
   return <Text style={styles.historyItem(item.status)}>{item.subject}</Text>;
 };
 
+const CompletedItem = ({ item, index }) => {
+  return (
+    <View>
+      {item.status === 1 ? (
+        <Text style={styles.historyItem(item.status)}>{item.subject}</Text>
+      ) : null}
+    </View>
+  );
+};
+
+const CancelledItem = ({ item, index }) => {
+  return (
+    <View>
+      {item.status === 2 ? (
+        <Text style={styles.historyItem(item.status)}>{item.subject}</Text>
+      ) : null}
+    </View>
+  );
+};
+
 export const FocusHistory = ({ focusHistory, onClear }) => {
   const clearHistory = () => {
     onClear();
@@ -21,7 +41,6 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
     <View style={styles.container}>
       {!!focusHistory.length && (
         <>
-          <Text style={styles.title}>Items we've focussed on recently:</Text>
           <View style={styles.legend}>
             <Text
               style={[
@@ -41,22 +60,44 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
             </Text>
           </View>
           <View style={{ flex: 1 }}>
-            <FlatList
-              style={styles.flatListContainer}
-              contentContainerStyle={{
+            <View
+              style={{
                 flex: 1,
-                alignItems: "center",
-                justifyContent: "flex-start",
+                width: "100%",
+                flexDirection: "row",
+                justifyContent: "space-around",
               }}
-              keyExtractor={(item) => item.key}
-              data={
-                useKeyboardVisible() ? focusHistory.slice(0, 4) : focusHistory
-              }
-              renderItem={HistoryItem}
-            />
+            >
+              <FlatList
+                style={styles.flatListContainer}
+                contentContainerStyle={{
+                  flex: 1,
+                  alignItems: "center",
+                  justifyContent: "flex-start",
+                }}
+                keyExtractor={(item) => item.key}
+                data={
+                  useKeyboardVisible() ? focusHistory.slice(0, 4) : focusHistory
+                }
+                renderItem={CompletedItem}
+              />
+              <FlatList
+                style={styles.flatListContainer}
+                contentContainerStyle={{
+                  flex: 1,
+                  alignItems: "center",
+                  justifyContent: "flex-start",
+                }}
+                keyExtractor={(item) => item.key}
+                data={
+                  useKeyboardVisible() ? focusHistory.slice(0, 4) : focusHistory
+                }
+                renderItem={CancelledItem}
+              />
+            </View>
             <View style={styles.clearContainer}>
               <Button
-                size={50}
+                size={60}
                 title="Clear"
                 onPress={() => {
                   clearHistory();
@@ -74,7 +115,7 @@ const styles = StyleSheet.create({
   clearContainer: {
     flex: 0,
     padding: spacingSizes.md,
-    alignSelf: "flex-start",
+    alignSelf: "center",
   },
   container: {
     flex: 1,
@@ -91,12 +132,13 @@ const styles = StyleSheet.create({
     fontSize: fontSizes.md,
     textShadowColor: colors.white,
     textShadowRadius: 4,
+    paddingTop: 3,
   }),
   legend: {
     flexDirection: "row",
     width: "100%",
     justifyContent: "space-around",
-    paddingTop: 5,
+    // paddingTop: 5,
   },
   title: {
     color: colors.white,
