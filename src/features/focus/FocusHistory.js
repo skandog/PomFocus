@@ -31,6 +31,14 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
     onClear();
   };
 
+  const findCompleteStatus = (arr, status) => {
+    return arr.filter((item) => {
+      return item.status === status;
+    });
+  };
+
+  console.log(findCompleteStatus(focusHistory, 1));
+
   return (
     <View style={styles.container}>
       {!!focusHistory.length && (
@@ -71,7 +79,9 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
                 }}
                 keyExtractor={(item) => item.key}
                 data={
-                  useKeyboardVisible() ? focusHistory.slice(0, 4) : focusHistory
+                  useKeyboardVisible()
+                    ? findCompleteStatus(focusHistory, 1).slice(0, 4)
+                    : focusHistory
                 }
                 renderItem={CompletedItem}
               />
@@ -84,7 +94,9 @@ export const FocusHistory = ({ focusHistory, onClear }) => {
                 }}
                 keyExtractor={(item) => item.key}
                 data={
-                  useKeyboardVisible() ? focusHistory.slice(0, 4) : focusHistory
+                  useKeyboardVisible()
+                    ? findCompleteStatus(focusHistory, 2).slice(0, 4)
+                    : focusHistory
                 }
                 renderItem={CancelledItem}
               />
